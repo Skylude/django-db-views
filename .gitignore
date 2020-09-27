@@ -7,4 +7,5 @@ build/
 dist/
 
 # from some hand checks during testing
-db.sqlite3
+.tox/
+
