@@ -1,20 +1,22 @@
 from __future__ import unicode_literals
 
-import environ
-
-
-env = environ.Env()
 
 DATABASES = {
-    "default": {
+    "default": {},
+    "sqllite": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": ":memory:"
     },
-    # 'postgresql': env.db('DATABASE_URL', default='postgres:///django_db_views')
-
+    "postgres": {
+        'ENGINE': 'django.db.backends.postgresql',
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
+        "HOST": "127.0.0.1",
+        "PORT": "5022",
+    }
 }
 
-DATABASE_ROUTERS = ['tests.testapp.database_routers.DataBaseRouter']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -22,7 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.sites",
-    "django_db_views.tests.testapp.apps.TestAppConfig"
+    "django_db_views.tests.testapp.apps.TestAppConfig",
+    "django_db_views"
 ]
 
 SITE_ID = 1
